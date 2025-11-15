@@ -1,7 +1,28 @@
+import os
+import requests
+
+
+
+URL_API_SERVICE = "http://api.weatherapi.com/v1/current.json"
+API_KEY = os.environ.get("WEATHER_API_KEY")
+
 def get_weather() -> None:
-    # write your code here
-    pass
+    response = requests.get(
+        URL_API_SERVICE,
+        params={
+            "key": API_KEY,
+            "q": "Paris",
+            "aqi": "no"
+        }
+    )
+    current_data = response.json().get("current", {})
+    current_temp_c = current_data.get("temp_c", "N/A")
+
+    print(f"Current temperature in Paris: {current_temp_c}°C")
+
+    return current_temp_c
 
 
 if __name__ == "__main__":
+
     get_weather()
