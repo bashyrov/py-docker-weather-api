@@ -3,6 +3,8 @@ import requests
 
 URL_API_SERVICE = "http://api.weatherapi.com/v1/current.json"
 API_KEY = os.environ.get("WEATHER_API_KEY")
+CITY = "Paris"
+AQI = "no"
 
 
 def get_weather() -> None:
@@ -10,8 +12,8 @@ def get_weather() -> None:
         URL_API_SERVICE,
         params={
             "key": API_KEY,
-            "q": "Paris",
-            "aqi": "no"
+            "q": CITY,
+            "aqi": AQI
         }
     )
     current_data = response.json().get("current", {})
