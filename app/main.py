@@ -1,10 +1,9 @@
 import os
 import requests
 
-
-
 URL_API_SERVICE = "http://api.weatherapi.com/v1/current.json"
 API_KEY = os.environ.get("WEATHER_API_KEY")
+
 
 def get_weather() -> None:
     response = requests.get(
