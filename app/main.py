@@ -7,7 +7,7 @@ CITY = "Paris"
 AQI = "no"
 
 
-def get_weather() -> None:
+def get_weather() -> str:
     response = requests.get(
         URL_API_SERVICE,
         params={
@@ -19,7 +19,7 @@ def get_weather() -> None:
     current_data = response.json().get("current", {})
     current_temp_c = current_data.get("temp_c", "N/A")
 
-    print(f"Current temperature in Paris: {current_temp_c}°C")
+    print(f"Current temperature in {CITY}: {current_temp_c}°C")
 
     return current_temp_c
 
